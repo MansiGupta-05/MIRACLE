@@ -10,6 +10,7 @@ MIRACLE is a Rural Healthcare Dispatch System designed to help manage emergency 
 The system receives an emergency request from a village and selects a suitable available ambulance and hospital. It considers ambulance availability, required specialist, hospital suitability, and road-network routes.
 
 The system displays:
+
 - Selected ambulance
 - Selected hospital
 - Total distance
@@ -41,6 +42,15 @@ Install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
+
+### Run the Application
+
+```bash
+python -m streamlit run app.py
+```
+
+The application will open in a browser at the local Streamlit address shown in the terminal.
 
 ## Algorithm / Approach
 
@@ -57,36 +67,42 @@ The system follows these steps:
 
 ### Routing Algorithm
 
-Dijkstra's shortest path algorithm is used to calculate routes through the road network.
+Dijkstra's Shortest Path Algorithm is used to calculate the shortest routes through the road network.
 
 The total distance is calculated as:
 
-Ambulance → Patient + Patient → Hospital
+**Ambulance → Patient + Patient → Hospital**
 
-The combination with the shortest feasible total distance is selected.
+The feasible ambulance-hospital combination with the minimum total distance is selected.
 
 ## Testing / Test Cases
 
 ### Test Case 1: Critical Emergency
+
 - Input: Critical priority with a required specialist.
 - Expected Result: An available ambulance and suitable hospital are selected.
 
 ### Test Case 2: No Available Ambulance
-- Input: All available ambulances are unavailable.
+
+- Input: All ambulances are unavailable.
 - Expected Result: The system returns "No available ambulance".
 
 ### Test Case 3: Specialist Requirement
+
 - Input: A specific specialist such as Cardiologist.
 - Expected Result: Hospitals without the required specialist are excluded.
 
 ### Test Case 4: No Feasible Route
+
 - Input: Locations with no valid route.
 - Expected Result: The system returns "No feasible route found".
 
 ## Third-Party APIs and AI Tools
 
 ### Third-Party APIs
+
 No third-party APIs are used in the current implementation.
 
 ### AI Tools
-AI tools were used during development for coding assistance, debugging, and documentation support.
+
+- **ChatGPT:** Used for coding assistance, debugging, documentation, and development guidance.
